@@ -1,1 +1,2269 @@
 
+# RAKAS
+# Rakas-
+Hej.Vi är ett företag i Stockholm sweden rp. Nordens största erlc server https://discord.gg/stockholmswedenroleplay
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rakas Hamburgare</title>
+    <meta
+      name="description"
+      content="Rakas Hamburgare – beställ hamburgare, se meny, hantera personal och admin i en cool SSRP-stil webbsida."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-bg" aria-hidden="true"></div>
+    <div class="backdrop"></div>
+
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="https://discord.gg/V5Ub2KcZC" target="_blank" rel="noreferrer" aria-label="Gå till RAKAS DC">
+          <span class="brand-mark">R</span>
+          <div>
+            <strong>RAKAS</strong>
+            <small>DC</small>
+          </div>
+        </a>
+
+        <nav class="main-nav">
+          <a href="menu.html">Meny</a>
+          <a href="menu.html#order">Beställ</a>
+          <a href="staff.html">Personal</a>
+        </nav>
+
+        <a class="nav-button" href="staff.html">Personal login</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <div class="hero-copy">
+          <span class="eyebrow">SSRP favorit • 15 min leverans</span>
+          <h1>Rakas Hamburgare</h1>
+          <p>
+            Nya grillade burgare, krispiga pommes och smaker som sätter smaklökarna
+            i gång. Beställ direkt online eller ta en titt på vår meny.
+          </p>
+
+          <div class="cta-row">
+            <a class="primary-btn" href="menu.html">Se menyn</a>
+            <a class="secondary-btn" href="menu.html#order">Beställ nu</a>
+          </div>
+
+          <div class="feature-list">
+            <div>
+              <strong>Fresh</strong>
+              <span>Grillad varje dag</span>
+            </div>
+            <div>
+              <strong>Fast</strong>
+              <span>Leverans i 15 min</span>
+            </div>
+            <div>
+              <strong>Populär</strong>
+              <span>Stockholms bästa hamburgare!</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Restaurant status panel">
+          <div class="burger-card main-card">
+            <div class="badge-pill">Raka online</div>
+            <div class="status-card">
+              <h3>Raka Burger</h3>
+              <ul>
+                <li>Beställ direkt i RP</li>
+                <li>Färska burgare &amp; pommes</li>
+                <li>Leverans i Stockholm</li>
+              </ul>
+              <div class="status-meta">
+                <span>Öppet nu</span>
+                <button>Beställ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu" class="menu-section container">
+        <div class="section-heading">
+          <span class="eyebrow">Meny</span>
+          <h2>Vår smakfulla meny</h2>
+        </div>
+
+        <div id="menuGrid" class="menu-grid"></div>
+      </section>
+
+      <section id="order" class="order-section container">
+        <div class="section-heading narrow">
+          <span class="eyebrow">Beställning</span>
+          <h2>Din beställning</h2>
+        </div>
+
+        <div class="order-wrap">
+          <div class="cart-panel">
+            <div id="cartItems" class="cart-items">
+              <p class="empty-cart">Din kundvagn är tom. Lägg till något från menyn.</p>
+            </div>
+
+            <div class="totals">
+              <div>
+                <span>Summa</span>
+                <strong id="subtotal">0 kr</strong>
+              </div>
+              <hr />
+              <div class="grand-total">
+                <span>Total</span>
+                <strong id="totalPrice">0 kr</strong>
+              </div>
+            </div>
+
+            <button class="checkout-btn">Betala</button>
+          </div>
+
+          <div class="info-panel">
+            <div class="info-card">
+              <h3>RP-beställning</h3>
+              <ul>
+                <li>Ingen frakt – beställning sker i RP</li>
+                <li>Välj mat direkt från menyn</li>
+                <li>Ta bort eller ändra val innan du betalar</li>
+              </ul>
+            </div>
+            <div class="info-card accent">
+              <h3>Aktuellt</h3>
+              <p>Rakas Friday Special – Dubbel burger + crispy fries för 199 kr.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="staff" class="staff-section container">
+        <div class="section-heading">
+          <span class="eyebrow">Personal</span>
+          <h2>Shift & admin</h2>
+        </div>
+
+        <div class="staff-panel">
+          <form id="loginForm" class="login-card">
+            <h3>Logga in</h3>
+            <label>
+              Användarnamn
+              <input type="text" id="username" placeholder="ex. shiftadmin" required />
+            </label>
+            <label>
+              Lösenord
+              <input type="password" id="password" placeholder="••••••••" required />
+            </label>
+            <button type="submit" class="primary-btn full">Logga in</button>
+          </form>
+
+          <div id="staffPortal" class="portal hidden">
+            <div class="portal-header">
+              <div>
+                <span class="eyebrow">Portal</span>
+                <h3>Personalhantering</h3>
+              </div>
+              <button id="logoutBtn" class="ghost-btn">Logga ut</button>
+            </div>
+
+            <div class="portal-grid">
+              <div class="admin-card">
+                <h4>Shift Admin</h4>
+                <form id="employeeForm">
+                  <label>
+                    Namn
+                    <input type="text" id="employeeName" placeholder="Namn" required />
+                  </label>
+                  <label>
+                    Roll
+                    <select id="employeeRole">
+                      <option value="Kassör">Kassör</option>
+                      <option value="Kock">Kock</option>
+                      <option value="Leverans">Leverans</option>
+                      <option value="Admin">Admin</option>
+                    </select>
+                  </label>
+                  <div class="permission-box">
+                    <label><input type="checkbox" checked /> Beställningar</label>
+                    <label><input type="checkbox" checked /> Kundservice</label>
+                    <label><input type="checkbox" /> Menyredigering</label>
+                    <label><input type="checkbox" /> Lönehantering</label>
+                  </div>
+                  <button type="submit" class="secondary-btn full">Lägg till personal</button>
+                </form>
+                <ul id="employeeList" class="list-box"></ul>
+              </div>
+
+              <div class="admin-card">
+                <h4>Super-Admin</h4>
+                <form id="superAdminForm">
+                  <label>
+                    Välj personal
+                    <select id="superAdminSelect">
+                      <option value="Sam">Sam</option>
+                      <option value="Lisa">Lisa</option>
+                      <option value="Theo">Theo</option>
+                    </select>
+                  </label>
+                  <label>
+                    Ge behörighet
+                    <select id="adminPermission">
+                      <option value="Admin">Admin</option>
+                      <option value="Super-Admin">Super-Admin</option>
+                    </select>
+                  </label>
+                  <button type="submit" class="secondary-btn full">Uppdatera behörighet</button>
+                </form>
+                <ul id="adminList" class="list-box"></ul>
+              </div>
+
+              <div class="admin-card wide-card">
+                <h4>Menyskapare</h4>
+                <form id="menuForm">
+                  <div class="split-fields">
+                    <label>
+                      Maträtt
+                      <input type="text" id="menuName" placeholder="Tex. BBQ Burger" required />
+                    </label>
+                    <label>
+                      Pris
+                      <input type="number" min="1" id="menuPrice" placeholder="129" required />
+                    </label>
+                  </div>
+                  <label>
+                    Beskrivning
+                    <textarea id="menuDesc" rows="3" placeholder="Beskrivning..." required></textarea>
+                  </label>
+                  <button type="submit" class="primary-btn full">Lägg till i meny</button>
+                </form>
+                <ul id="menuEditorList" class="list-box"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <a class="discord-link" href="https://discord.gg/V5Ub2KcZC" target="_blank" rel="noreferrer">
+          RAKAS DC
+        </a>
+        <a class="discord-link ssrp-box" href="https://discord.gg/stockholmswedenroleplay" target="_blank" rel="noreferrer"aria-label="Gå till SSRP DC">
+          SSRP DC
+        </a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rakas Hamburgare | Meny</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="backdrop"></div>
+
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html" aria-label="Startsida">
+          <span class="brand-mark">R</span>
+          <div>
+            <strong>Rakas</strong>
+            <small>Hamburgare</small>
+          </div>
+        </a>
+
+        <nav class="main-nav">
+          <a href="menu.html">Meny</a>
+          <a href="#order">Beställ</a>
+          <a href="staff.html">Personal</a>
+        </nav>
+
+        <a class="nav-button" href="staff.html">Personal login</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="container menu-section">
+        <div class="section-heading">
+          <span class="eyebrow">Meny</span>
+          <h2>Vår smakfulla meny</h2>
+        </div>
+
+        <div id="menuGrid" class="menu-grid"></div>
+      </section>
+
+      <section id="order" class="container order-section">
+        <div class="section-heading narrow">
+          <span class="eyebrow">Beställning</span>
+          <h2>Din beställning</h2>
+        </div>
+
+        <div class="order-wrap">
+          <div class="cart-panel">
+            <div id="cartItems" class="cart-items">
+              <p class="empty-cart">Din kundvagn är tom. Lägg till något från menyn.</p>
+            </div>
+
+            <div class="totals">
+              <div>
+                <span>Summa</span>
+                <strong id="subtotal">0 kr</strong>
+              </div>
+              <hr />
+              <div class="grand-total">
+                <span>Total</span>
+                <strong id="totalPrice">0 kr</strong>
+              </div>
+            </div>
+
+            <button class="checkout-btn">Betala till ErkanBra</button>
+          </div>
+
+          <div class="info-panel">
+            <div class="info-card">
+              <h3>RP-beställning</h3>
+              <ul>
+                <li>Ingen frakt – beställning sker i RP</li>
+                <li>Välj mat direkt från menyn</li>
+                <li>Ta bort eller ändra val innan du betalar</li>
+              </ul>
+            </div>
+            <div class="info-card accent">
+              <h3>Aktuellt</h3>
+              <p id="currentSpecialDisplay">Rakas Friday Special – Dubbel burger + crispy fries för 199 kr.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <a class="discord-link" href="https://discord.gg/stockholmswedenroleplay" target="_blank" rel="noreferrer">Join Discord</a
+          
+
+        <p>SSRP DC ^</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+let menuItems = [
+  {
+    id: 1,
+    category: 'Burgers',
+    name: 'Classic Burger',
+    price: 119,
+    emoji: '🍔',
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=80',
+    description: 'Smörad brioche, ost, pickles och Rakas hemliga sås.'
+  },
+  {
+    id: 2,
+    category: 'Burgers',
+    name: 'Double Smash',
+    price: 159,
+    emoji: '🍔',
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=80',
+    description: 'Två grillade burgare, cheddar, lök och crispy bacon.'
+  },
+  {
+    id: 3,
+    category: 'Burgers',
+    name: 'Chicken Burger',
+    price: 129,
+    emoji: '🍗',
+    image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=1200&q=80',
+    description: 'Krispig kyckling, ranch, sallad och tomat.'
+  },
+  {
+    id: 4,
+    category: 'Drinks',
+    name: 'Fanta Zero',
+    price: 29,
+    emoji: '🥤',
+    image: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1200&q=80',
+    description: 'Kall och fräsch dryck perfekt till burgaren.'
+  },
+  {
+    id: 5,
+    category: 'Drinks',
+    name: 'Coca-Cola',
+    price: 29,
+    emoji: '🥤',
+    image: 'https://images.unsplash.com/photo-1622483767028-3f66f2b7420a?auto=format&fit=crop&w=1200&q=80',
+    description: 'Klassisk coladryck med iskallt lager.'
+  },
+  {
+    id: 6,
+    category: 'Drinks',
+    name: 'Ice Tea',
+    price: 34,
+    emoji: '🧊',
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1200&q=80',
+    description: 'Lätt och uppfriskande te med citron.'
+  },
+  {
+    id: 7,
+    category: 'Fries',
+    name: 'Fries Deluxe',
+    price: 59,
+    emoji: '🍟',
+    image: 'https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=1200&q=80',
+    description: 'Krispiga pommes med parmesan och örtsalt.'
+  },
+  {
+    id: 8,
+    category: 'Fries',
+    name: 'Loaded Fries',
+    price: 69,
+    emoji: '🔥',
+    image: 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=1200&q=80',
+    description: 'Pommes med ost, bacon och BBQ-sås.'
+  },
+  {
+    id: 9,
+    category: 'Extras',
+    name: 'Dip Box',
+    price: 19,
+    emoji: '🥫',
+    image: 'https://images.unsplash.com/photo-1604908814940-4d2d1d33d9d6?auto=format&fit=crop&w=1200&q=80',
+    description: 'Kryddig dip mix med aioli, BBQ och chili.'
+  },
+  {
+    id: 10,
+    category: 'Extras',
+    name: 'Onion Rings',
+    price: 39,
+    emoji: '🧅',
+    image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1200&q=80',
+    description: 'Lökringar med krispig panering och dip.'
+  },
+  {
+    id: 11,
+    category: 'Extras',
+    name: 'Raka Combo',
+    price: 179,
+    emoji: '🍔',
+    image: '',
+    description: 'Burger, pommes och dryck i ett komplett combo.'
+  }
+];
+
+const cart = [];
+const adminUsers = [
+  { username: 'shiftadmin', password: 'admin123', role: 'Shift Admin' },
+  { username: 'admin', password: 'admin123', role: 'Admin' },
+  { username: 'superadmin', password: 'superadmin123', role: 'Super-Admin' },
+  { username: 'erkanbra', password: 'erkan123', role: 'Owner' }
+];
+
+// Load employees from localStorage
+function loadEmployees() {
+  const stored = localStorage.getItem('employees');
+  return stored ? JSON.parse(stored) : [];
+}
+
+// Save employees to localStorage
+function saveEmployees(employees) {
+  localStorage.setItem('employees', JSON.stringify(employees));
+}
+
+// Load orders from localStorage
+function loadOrders() {
+  const stored = localStorage.getItem('orders');
+  return stored ? JSON.parse(stored) : [];
+}
+
+// Save orders to localStorage
+function saveOrders(orders) {
+  localStorage.setItem('orders', JSON.stringify(orders));
+}
+
+let employees = loadEmployees();
+let orders = loadOrders();
+let currentEmployee = null;
+let currentShift = null;
+
+const menuGrid = document.getElementById('menuGrid');
+const cartItems = document.getElementById('cartItems');
+const subtotalEl = document.getElementById('subtotal');
+const totalPriceEl = document.getElementById('totalPrice');
+const deliveryEl = document.getElementById('delivery');
+const loginForm = document.getElementById('loginForm');
+const staffPortal = document.getElementById('staffPortal');
+const logoutBtn = document.getElementById('logoutBtn');
+const employeeList = document.getElementById('employeeList');
+const adminList = document.getElementById('adminList');
+const menuEditorList = document.getElementById('menuEditorList');
+const employeeForm = document.getElementById('employeeForm');
+const superAdminForm = document.getElementById('superAdminForm');
+const menuForm = document.getElementById('menuForm');
+
+function renderMenu() {
+  if (!menuGrid) return;
+
+  const categories = ['Burgers', 'Drinks', 'Fries', 'Extras'];
+
+  menuGrid.innerHTML = categories
+    .map((category) => {
+      const items = menuItems.filter((item) => item.category === category);
+
+      return `
+        <section class="category-block">
+          <h3 class="category-title">${category}</h3>
+          <div class="category-items">
+            ${items
+              .map(
+                (item) => `
+                  <article class="menu-card">
+                    <div class="menu-image">
+                      ${item.image ? `<img src="${item.image}" alt="${item.name}" />` : `<span class="menu-fallback">${item.emoji}</span>`}
+                    </div>
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <div class="menu-meta">
+                      <strong>${item.price} kr</strong>
+                      <button data-id="${item.id}" class="add-to-cart">Lägg till</button>
+                    </div>
+                  </article>
+                `
+              )
+              .join('')}
+          </div>
+        </section>
+      `;
+    })
+    .join('');
+
+  document.querySelectorAll('.add-to-cart').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = menuItems.find((entry) => entry.id === Number(button.dataset.id));
+      if (!item) return;
+
+      const existing = cart.find((entry) => entry.id === item.id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...item, quantity: 1 });
+      }
+
+      updateCart();
+    });
+  });
+}
+
+function updateCart() {
+  if (!cartItems || !subtotalEl || !totalPriceEl) return;
+
+  if (!cart.length) {
+    cartItems.innerHTML = '<p class="empty-cart">Din kundvagn är tom. Lägg till något från menyn.</p>';
+    subtotalEl.textContent = '0 kr';
+    totalPriceEl.textContent = '0 kr';
+    return;
+  }
+
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = subtotal;
+
+  cartItems.innerHTML = cart
+    .map(
+      (item) => `
+        <div class="cart-item">
+          <div>
+            <h4>${item.name}</h4>
+            <p>${item.price} kr/st</p>
+          </div>
+          <div class="cart-actions">
+            <button class="quantity-btn" data-action="decrease" data-id="${item.id}">-</button>
+            <span>${item.quantity}</span>
+            <button class="quantity-btn" data-action="increase" data-id="${item.id}">+</button>
+            <span class="price-tag">${item.price * item.quantity} kr</span>
+          </div>
+        </div>
+      `
+    )
+    .join('');
+
+  subtotalEl.textContent = `${subtotal} kr`;
+  totalPriceEl.textContent = `${total} kr`;
+
+  document.querySelectorAll('.quantity-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+      const id = Number(button.dataset.id);
+      const item = cart.find((entry) => entry.id === id);
+      if (!item) return;
+
+      if (button.dataset.action === 'increase') {
+        item.quantity += 1;
+      } else {
+        item.quantity -= 1;
+        if (item.quantity <= 0) {
+          const index = cart.findIndex((entry) => entry.id === id);
+          cart.splice(index, 1);
+        }
+      }
+
+      updateCart();
+    });
+  });
+}
+
+const loginCard = document.getElementById('loginCard');
+const loginBtn = document.getElementById('loginBtn');
+
+function showPortal() {
+  if (loginCard) loginCard.classList.add('hidden');
+  if (staffPortal) staffPortal.classList.remove('hidden');
+}
+
+function showLogin() {
+  if (loginCard) loginCard.classList.remove('hidden');
+  if (staffPortal) staffPortal.classList.add('hidden');
+}
+
+function handleLogin(event) {
+  if (event) event.preventDefault();
+
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const match = adminUsers.find(
+    (user) => user.username.toLowerCase() === username.toLowerCase() && user.password === password
+  );
+
+  if (match) {
+    showPortal();
+    if (loginForm) loginForm.reset();
+    return true;
+  }
+
+  alert('Fel användarnamn eller lösenord. Testa: shiftadmin / admin123 eller superadmin / superadmin123');
+  return false;
+}
+
+if (!window.__staffLoginInitialized && loginForm && staffPortal) {
+  window.__staffLoginInitialized = true;
+
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const success = handleLogin(event);
+    if (success) {
+      alert(`Välkommen ${adminUsers.find((user) => user.username.toLowerCase() === document.getElementById('username').value.trim().toLowerCase())?.role || 'Admin'}!`);
+    }
+  });
+
+  if (loginBtn) {
+    loginBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      const success = handleLogin(event);
+      if (success) {
+        alert(`Välkommen ${adminUsers.find((user) => user.username.toLowerCase() === document.getElementById('username').value.trim().toLowerCase())?.role || 'Admin'}!`);
+      }
+    });
+  }
+}
+
+if (!window.__staffLogoutInitialized && logoutBtn && staffPortal && loginForm && loginCard) {
+  window.__staffLogoutInitialized = true;
+  logoutBtn.addEventListener('click', () => {
+    showLogin();
+    loginForm.reset();
+  });
+}
+
+if (employeeForm && employeeList) {
+  // Employee form submission now handled via inline onsubmit in staff.html
+}
+
+if (superAdminForm && adminList) {
+  // Super-Admin form submission now handled via inline onsubmit in staff.html
+}
+
+if (menuForm && menuEditorList) {
+  menuForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = document.getElementById('menuName').value.trim();
+    const price = Number(document.getElementById('menuPrice').value);
+    const description = document.getElementById('menuDesc').value.trim();
+    const emoji = document.getElementById('menuEmoji')?.value || '🍔';
+    const category = document.getElementById('menuCategory')?.value || 'Extras';
+
+    if (!name || !description || !price) return;
+
+    const newId = Math.max(...menuItems.map(item => item.id), 0) + 1;
+    const newItem = {
+      id: newId,
+      category: category,
+      name: name,
+      price: price,
+      emoji: emoji,
+      description: description
+    };
+
+    menuItems.push(newItem);
+
+    const item = document.createElement('li');
+    item.style.padding = '10px 12px';
+    item.style.backgroundColor = 'rgba(76, 201, 255, 0.1)';
+    item.style.borderRadius = '8px';
+    item.style.fontSize = '0.9rem';
+    item.style.lineHeight = '1.6';
+    item.innerHTML = `
+      <strong style="color: var(--accent);">${emoji} ${name}</strong><br>
+      <span style="color: var(--muted); font-size: 0.85rem;">
+        ${category} • ${price} kr
+      </span>
+    `;
+    menuEditorList.appendChild(item);
+    menuForm.reset();
+    
+    if (typeof renderMenu === 'function') {
+      renderMenu();
+    }
+  });
+}
+
+document.querySelectorAll('.checkout-btn').forEach((button) => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    showPaymentModal();
+  });
+});
+
+function showPaymentModal() {
+  const existingModal = document.getElementById('paymentModal');
+  if (existingModal) existingModal.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'paymentModal';
+  modal.className = 'payment-modal';
+  modal.innerHTML = `
+    <div class="modal-overlay" onclick="document.getElementById('paymentModal').remove()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Betala</h2>
+        <button class="modal-close" onclick="document.getElementById('paymentModal').remove()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="payment-box">
+          <p class="payment-label">Mottagare</p>
+          <h3 class="payment-amount">Polreg.se</h3>
+          <hr class="modal-divider">
+          <p class="payment-info">Din beställning är redo. Bekräfta betalningen för att slutföra ordern.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="secondary-btn" onclick="document.getElementById('paymentModal').remove()">Avbryt</button>
+        <button class="primary-btn" onclick="completeOrder()">Bekräfta</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function completeOrder() {
+  // Save order to localStorage
+  const order = {
+    id: Math.floor(Math.random() * 100000),
+    items: [...cart],
+    total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    timestamp: new Date().toISOString(),
+    status: 'pending'
+  };
+  
+  orders.push(order);
+  saveOrders(orders);
+  
+  alert('Tack för din beställning! Polreg.se kommer att ta emot betalningen.');
+  cart.length = 0;
+  updateCart();
+  document.getElementById('paymentModal').remove();
+}
+
+function initializeSpecialDisplay() {
+  const specialDisplay = document.getElementById('currentSpecialDisplay');
+  if (specialDisplay) {
+    specialDisplay.textContent = "Rakas Friday Special – Dubbel burger + crispy fries för 199 kr.";
+  }
+}
+
+renderMenu();
+updateCart();
+initializeSpecialDisplay();
+
+// Employee portal functions
+function handleStaffLogin() {
+  const u = document.getElementById('username').value.trim();
+  const p = document.getElementById('password').value.trim();
+  
+  // Check admin users
+  const ADMINS_LOGIN = [
+    { username: 'shiftadmin', password: 'admin123', role: 'Shift Admin' },
+    { username: 'admin', password: 'admin123', role: 'Admin' },
+    { username: 'superadmin', password: 'superadmin123', role: 'Super-Admin' },
+    { username: 'erkanbra', password: 'erkan123', role: 'Owner' }
+  ];
+  
+  const adminMatch = ADMINS_LOGIN.find(a => a.username.toLowerCase() === u.toLowerCase() && a.password === p);
+  if (adminMatch) {
+    // Store the current admin role for permission checks
+    window.currentAdminRole = adminMatch.role;
+    
+    document.getElementById('loginCard').classList.add('hidden');
+    document.getElementById('staffPortal').classList.remove('hidden');
+    const sd = document.getElementById('currentSpecialDisplay');
+    if (sd) sd.textContent = "Rakas Friday Special – Dubbel burger + crispy fries för 199 kr.";
+    const st = document.getElementById('specialText');
+    if (st) st.value = "Rakas Friday Special – Dubbel burger + crispy fries för 199 kr.";
+    const sac = document.querySelector('#superAdminForm')?.parentElement;
+    if (sac) {
+      const isSuperAdmin = adminMatch.role === 'Super-Admin' || adminMatch.role === 'Owner';
+      sac.style.display = isSuperAdmin ? 'block' : 'none';
+      
+      // Show Super-Admin option in dropdown for Super-Admin users
+      const superAdminOption = document.querySelector('option.super-admin-option');
+      if (superAdminOption) {
+        superAdminOption.style.display = isSuperAdmin ? 'block' : 'none';
+      }
+      
+      // Add notice for non-Super-Admin users
+      if (!isSuperAdmin) {
+        const noticeEl = document.createElement('div');
+        noticeEl.style.padding = '12px';
+        noticeEl.style.backgroundColor = 'rgba(255, 193, 7, 0.1)';
+        noticeEl.style.border = '1px solid rgba(255, 193, 7, 0.3)';
+        noticeEl.style.borderRadius = '8px';
+        noticeEl.style.marginBottom = '16px';
+        noticeEl.style.color = 'rgba(255, 193, 7, 0.8)';
+        noticeEl.style.fontSize = '0.9rem';
+        noticeEl.textContent = '⚠️ Endast Super-Admin kan ge Super-Admin behörighet';
+        sac.parentElement.insertBefore(noticeEl, sac);
+      }
+    }
+    alert('Välkommen ' + adminMatch.role + '!');
+    document.getElementById('loginForm').reset();
+    return;
+  }
+  
+  // Check employee users
+  const employeeMatch = employees.find(e => e.username.toLowerCase() === u.toLowerCase() && e.password === p);
+  if (employeeMatch) {
+    currentEmployee = employeeMatch;
+    document.getElementById('loginCard').classList.add('hidden');
+    document.getElementById('employeePortal').classList.remove('hidden');
+    document.getElementById('employeePortalName').textContent = employeeMatch.name + ' (' + employeeMatch.role + ')';
+    updateEmployeeOrders();
+    document.getElementById('loginForm').reset();
+    updateShiftStatus();
+    alert('Välkommen ' + employeeMatch.name + '!');
+    return;
+  }
+  
+  alert('Fel användarnamn eller lösenord!');
+}
+
+function logoutEmployee() {
+  currentEmployee = null;
+  currentShift = null;
+  document.getElementById('employeePortal').classList.add('hidden');
+  document.getElementById('loginCard').classList.remove('hidden');
+  document.getElementById('loginForm').reset();
+}
+
+function toggleShift() {
+  if (!currentEmployee) return;
+  
+  if (!currentShift) {
+    currentShift = {
+      employee: currentEmployee.username,
+      startTime: new Date().toISOString(),
+      endTime: null
+    };
+  } else {
+    currentShift.endTime = new Date().toISOString();
+    currentShift = null;
+  }
+  
+  updateShiftStatus();
+}
+
+function updateShiftStatus() {
+  const btn = document.getElementById('shiftBtn');
+  const status = document.getElementById('shiftStatus');
+  
+  if (currentShift) {
+    btn.textContent = 'Gå ut shift';
+    btn.style.backgroundColor = 'var(--destructive)';
+    const startTime = new Date(currentShift.startTime);
+    status.textContent = '✓ I shift sedan ' + startTime.toLocaleTimeString('sv-SE');
+  } else {
+    btn.textContent = 'Gå in shift';
+    btn.style.backgroundColor = '';
+    status.textContent = '○ Inte i shift';
+  }
+}
+
+function updateEmployeeOrders() {
+  const container = document.getElementById('ordersContainer');
+  
+  if (!orders || orders.length === 0) {
+    container.innerHTML = '<p style="color: var(--muted); text-align: center;">Inga ordrar att ta.</p>';
+    return;
+  }
+  
+  const pendingOrders = orders.filter(o => o.status === 'pending');
+  
+  if (pendingOrders.length === 0) {
+    container.innerHTML = '<p style="color: var(--muted); text-align: center;">Inga ordrar att ta.</p>';
+    return;
+  }
+  
+  container.innerHTML = pendingOrders.map(order => {
+    const itemsList = order.items.map(item => `${item.quantity}x ${item.name}`).join(', ');
+    return `
+      <div style="padding: 12px; background: rgba(76, 201, 255, 0.1); border-radius: 8px; margin-bottom: 10px; border: 1px solid rgba(76, 201, 255, 0.2);">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
+          <div>
+            <strong style="color: var(--accent);">Order #${order.id}</strong><br>
+            <span style="color: var(--muted); font-size: 0.85rem;">${itemsList}</span>
+          </div>
+          <span style="background: rgba(76, 201, 255, 0.2); padding: 4px 8px; border-radius: 4px; font-weight: 600; color: var(--accent);">${order.total} kr</span>
+        </div>
+        <button class="secondary-btn full" onclick="completeEmployeeOrder(${order.id});" style="margin-top: 8px;">Markera som klar</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function completeEmployeeOrder(orderId) {
+  const order = orders.find(o => o.id === orderId);
+  if (order) {
+    order.status = 'completed';
+    order.completedBy = currentEmployee.username;
+    order.completedTime = new Date().toISOString();
+    saveOrders(orders);
+    updateEmployeeOrders();
+    alert('Order markerad som klar!');
+  }
+}
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rakas Hamburgare | Personal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="backdrop"></div>
+
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html" aria-label="Startsida">
+          <span class="brand-mark">R</span>
+          <div>
+            <strong>Rakas</strong>
+            <small>Hamburgare</small>
+          </div>
+        </a>
+
+        <nav class="main-nav">
+          <a href="menu.html">Meny</a>
+          <a href="menu.html#order">Beställ</a>
+          <a href="staff.html">Personal</a>
+        </nav>
+
+        <a class="nav-button" href="menu.html">Se meny</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="portal-shell">
+        <div id="loginCard" class="auth-panel">
+          <div class="section-heading left-align">
+            <span class="eyebrow">Personal</span>
+            <h2>Shift & admin</h2>
+          </div>
+
+          <form id="loginForm" class="login-card full-login">
+            <h3>Logga in</h3>
+            <label>
+              Användarnamn
+              <input type="text" id="username" placeholder="ex. shiftadmin" required />
+            </label>
+            <label>
+              Lösenord
+              <input type="password" id="password" placeholder="••••••••" required />
+            </label>
+            <button type="button" class="primary-btn full" onclick="handleStaffLogin();" style="cursor: pointer;">Logga in</button>
+            <small>Demo: shiftadmin / admin123 | superadmin / superadmin123</small>
+          </form>
+        </div>
+
+        <div id="employeePortal" class="portal hidden portal-full">
+          <div class="portal-header">
+            <div>
+              <span class="eyebrow">Shift Portal</span>
+              <h3 id="employeePortalName" style="margin: 0;"></h3>
+            </div>
+            <button class="ghost-btn" onclick="logoutEmployee();">Logga ut</button>
+          </div>
+          <div class="portal-grid">
+            <div class="admin-card">
+              <h4>Mina Shift</h4>
+              <button class="primary-btn full" id="shiftBtn" onclick="toggleShift();">Gå in shift</button>
+              <p id="shiftStatus" style="text-align: center; color: var(--muted); margin-top: 12px;"></p>
+            </div>
+            <div class="admin-card wide-card">
+              <h4>Ordrar</h4>
+              <div id="ordersContainer" style="max-height: 400px; overflow-y: auto;">
+                <p style="color: var(--muted); text-align: center;">Inga ordrar att ta.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="staffPortal" class="portal hidden portal-full">
+          <div class="portal-header">
+            <div>
+              <span class="eyebrow">Portal</span>
+              <h3>Personalhantering</h3>
+            </div>
+            <button class="ghost-btn" onclick="document.getElementById('staffPortal').classList.add('hidden'); document.getElementById('loginCard').classList.remove('hidden'); document.getElementById('loginForm').reset();">Logga ut</button>
+          </div>
+
+          <div class="portal-grid">
+            <div class="admin-card">
+              <h4>Shift Admin</h4>
+              <form id="employeeForm" onsubmit="return handleEmployeeFormSubmit(event);">
+                <label>
+                  Namn
+                  <input type="text" id="employeeName" placeholder="Namn" required />
+                </label>
+                <label>
+                  Roll
+                  <select id="employeeRole">
+                    <option value="Kassör">Kassör</option>
+                    <option value="Kock">Kock</option>
+                    <option value="Leverans">Leverans</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+                </label>
+                <label>
+                  Lösenord (Adminen bestämmer)
+                  <input type="text" id="employeePassword" placeholder="ex. kassa123" required />
+                </label>
+                <div class="permission-box">
+                  <label><input type="checkbox" checked /> Beställningar</label>
+                  <label><input type="checkbox" checked /> Kundservice</label>
+                  <label><input type="checkbox" /> Menyredigering</label>
+                  <label><input type="checkbox" /> Lönehantering</label>
+                </div>
+                <button type="submit" class="secondary-btn full">Skapa konto & Lägg till personal</button>
+              </form>
+              <div style="margin-top: 18px; padding: 14px; background: rgba(76, 201, 255, 0.08); border-radius: 12px; border: 1px solid rgba(76, 201, 255, 0.2);">
+                <p style="margin: 0 0 12px 0; font-weight: 600; color: var(--accent);">Skapade konton:</p>
+                <ul id="employeeList" class="list-box" style="margin: 0;"></ul>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <h4>Super-Admin</h4>
+              <form id="superAdminForm" onsubmit="return handleSuperAdminFormSubmit();">
+                <label>
+                  Välj personal
+                  <select id="superAdminSelect">
+                    <option value="Sam">Sam</option>
+                    <option value="Lisa">Lisa</option>
+                    <option value="Theo">Theo</option>
+                  </select>
+                </label>
+                <label>
+                  Ge behörighet
+                  <select id="adminPermission">
+                    <option value="Shift Admin">Shift Admin</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Super-Admin" class="super-admin-option" style="display: none;">Super-Admin</option>
+                  </select>
+                </label>
+                <button type="submit" class="secondary-btn full">Uppdatera behörighet</button>
+              </form>
+              <ul id="adminList" class="list-box"></ul>
+            </div>
+
+            <div class="admin-card wide-card">
+              <h4>Menyskapare</h4>
+              <form id="menuForm" onsubmit="
+                event.preventDefault();
+                const name = document.getElementById('menuName')?.value?.trim();
+                const price = document.getElementById('menuPrice')?.value;
+                const category = document.getElementById('menuCategory')?.value;
+                const emoji = document.getElementById('menuEmoji')?.value?.trim();
+                const desc = document.getElementById('menuDesc')?.value?.trim();
+                if (name && price && category && emoji && desc) {
+                  if (typeof menuItems !== 'undefined' && typeof renderMenu !== 'undefined') {
+                    const newId = (menuItems.length > 0 ? Math.max(...menuItems.map(m => m.id || 0)) : 0) + 1;
+                    menuItems.push({ id: newId, name: name, price: parseFloat(price), category: category, emoji: emoji, description: desc });
+                    renderMenu();
+                    document.getElementById('menuForm').reset();
+                    alert('Maträtt tillagd!');
+                  }
+                } else {
+                  alert('Fyll i alla fält!');
+                }
+              ">
+                <div class="split-fields">
+                  <label>
+                    Maträtt
+                    <input type="text" id="menuName" placeholder="Tex. BBQ Burger" required />
+                  </label>
+                  <label>
+                    Pris
+                    <input type="number" min="1" id="menuPrice" placeholder="129" required />
+                  </label>
+                </div>
+                <div class="split-fields">
+                  <label>
+                    Kategori
+                    <select id="menuCategory" required>
+                      <option value="Burgers">Burgers</option>
+                      <option value="Drinks">Drinks</option>
+                      <option value="Fries">Fries</option>
+                      <option value="Extras">Extras</option>
+                    </select>
+                  </label>
+                  <label>
+                    Emoji
+                    <input type="text" id="menuEmoji" placeholder="🍔" value="🍔" maxlength="2" required />
+                  </label>
+                </div>
+                <label>
+                  Beskrivning
+                  <textarea id="menuDesc" rows="3" placeholder="Beskrivning..." required></textarea>
+                </label>
+                <button type="submit" class="primary-btn full">Lägg till i meny</button>
+              </form>
+              <ul id="menuEditorList" class="list-box"></ul>
+            </div>
+
+            <div class="admin-card wide-card">
+              <h4>Aktuellt – Dagens erbjudande</h4>
+              <form id="specialForm" onsubmit="
+                event.preventDefault();
+                const newText = document.getElementById('specialText')?.value?.trim();
+                if (newText) {
+                  const dispEl = document.getElementById('currentSpecialDisplay');
+                  if (dispEl) dispEl.textContent = newText;
+                  alert('Aktuellt erbjudande uppdaterat!');
+                  document.getElementById('specialForm').reset();
+                } else {
+                  alert('Skriv något först!');
+                }
+              ">
+                <label>
+                  Vad är aktuellt idag?
+                  <textarea id="specialText" rows="3" placeholder="Skriv dagens erbjudande..." required></textarea>
+                </label>
+                <button type="submit" class="primary-btn full">Uppdatera erbjudande</button>
+              </form>
+              <div style="margin-top: 18px; padding: 14px; background: rgba(255, 123, 44, 0.1); border-radius: 12px; border: 1px solid rgba(255, 123, 44, 0.2);">
+                <p style="margin: 0 0 8px 0; font-weight: 600; color: var(--accent);">Aktuellt nu:</p>
+                <p id="currentSpecialDisplay" style="margin: 0; color: var(--muted); font-style: italic;"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <a class="discord-link" href="https://discord.gg/stockholmswedenroleplay" target="_blank" rel="noreferrer">Join Discord</a>
+        <p>SSRP DC ^</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      function handleEmployeeFormSubmit(event) {
+        if (event) event.preventDefault();
+        
+        const nameEl = document.getElementById('employeeName');
+        const roleEl = document.getElementById('employeeRole');
+        const passwordEl = document.getElementById('employeePassword');
+        
+        if (!nameEl || !roleEl || !passwordEl) {
+          console.error('Form elements not found');
+          return false;
+        }
+        
+        const name = nameEl.value.trim();
+        const role = roleEl.value;
+        const password = passwordEl.value.trim();
+        
+        if (!name || !password) {
+          alert('Fyll i namn och lösenord!');
+          return false;
+        }
+        
+        const username = name.toLowerCase().replace(/\s+/g, '');
+        
+        const newEmployee = {
+          username: username,
+          password: password,
+          name: name,
+          role: role
+        };
+        
+        if (typeof employees === 'undefined') {
+          window.employees = [];
+        }
+        employees.push(newEmployee);
+        if (typeof saveEmployees === 'function') {
+          saveEmployees(employees);
+        }
+        
+        const employeeList = document.getElementById('employeeList');
+        if (employeeList) {
+          const item = document.createElement('li');
+          item.style.padding = '10px 12px';
+          item.style.backgroundColor = 'rgba(76, 201, 255, 0.1)';
+          item.style.borderRadius = '8px';
+          item.style.fontSize = '0.9rem';
+          item.style.lineHeight = '1.6';
+          item.innerHTML = '<strong style="color: var(--accent);">' + name + '</strong><br>' +
+            '<span style="color: var(--muted); font-size: 0.85rem;">' +
+            '<strong>Användarnamn:</strong> <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace;">' + username + '</code><br>' +
+            '<strong>Lösenord:</strong> <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace;">' + password + '</code><br>' +
+            '<strong>Roll:</strong> ' + role + '</span>';
+          employeeList.appendChild(item);
+        }
+        
+        document.getElementById('employeeForm').reset();
+        alert('Konto skapat! Användarnamn: ' + username);
+        return false;
+      }
+      
+      function handleSuperAdminFormSubmit(event) {
+        if (event) event.preventDefault();
+        
+        // Get the current admin role
+        const adminRole = window.currentAdminRole || 'Admin';
+        
+        // Only Super-Admin or Owner can assign Super-Admin role
+        const permissionEl = document.getElementById('adminPermission');
+        if (permissionEl && permissionEl.value === 'Super-Admin') {
+          if (adminRole !== 'Super-Admin' && adminRole !== 'Owner') {
+            alert('Endast Super-Admin kan ge Super-Admin behörighet!');
+            return false;
+          }
+        }
+        
+        const personEl = document.getElementById('superAdminSelect');
+        
+        if (!personEl || !permissionEl) return false;
+        
+        const person = personEl.value;
+        const permission = permissionEl.value;
+        
+        const adminList = document.getElementById('adminList');
+        if (adminList) {
+          const item = document.createElement('li');
+          item.textContent = person + ' • ' + permission;
+          adminList.appendChild(item);
+        }
+        
+        document.getElementById('superAdminForm').reset();
+        alert('Behörighet uppdaterad för ' + person + ' till ' + permission);
+        return false;
+      }
+    </script>
+  </body>
+</html>
+:root {
+  --bg: #0d0f13;
+  --bg-soft: #121720;
+  --panel: #171d27;
+  --panel-strong: #1d2430;
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #f4eee8;
+  --muted: #b6a79d;
+  --accent: #f4b862;
+  --accent-2: #eb8039;
+  --accent-3: #ff8f5a;
+  --brown: #f7d9b9;
+  --green: #7dc88c;
+  --cream: #fff7ea;
+  --shadow: 0 28px 60px rgba(0, 0, 0, 0.38);
+  --glow-soft: 0 18px 32px rgba(231, 127, 58, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 160, 80, 0.10), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(167, 85, 42, 0.08), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.page-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.8) brightness(0.35) contrast(1.1);
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 160, 80, 0.06), transparent 35%),
+              linear-gradient(-45deg, rgba(139, 96, 70, 0.05), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px) saturate(1.5);
+  background: rgba(12, 15, 20, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  background: linear-gradient(135deg, #f9d39a, #f09a4d);
+  color: #11151c;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.4), 0 10px 18px rgba(240, 154, 77, 0.24);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand:hover .brand-mark {
+  transform: translateY(-1px) rotate(-4deg);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.4), 0 14px 22px rgba(240, 154, 77, 0.3);
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.brand small {
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.main-nav {
+  display: flex;
+  gap: 28px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.main-nav a {
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--text);
+}
+
+.nav-button,
+.primary-btn,
+.secondary-btn,
+.checkout-btn,
+.ghost-btn,
+.order-mini button {
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-button,
+.secondary-btn,
+.ghost-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.nav-button:hover,
+.secondary-btn:hover,
+.ghost-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+}
+
+.primary-btn,
+.checkout-btn,
+.order-mini button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #1a120d;
+  box-shadow: var(--glow-soft);
+  font-weight: 800;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.checkout-btn:hover,
+.nav-button:hover,
+.ghost-btn:hover,
+.order-mini button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 28px rgba(226, 120, 45, 0.2);
+}
+
+.hero {
+  padding: 64px 0 40px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(227, 135, 65, 0.1);
+  border: 1px solid rgba(184, 91, 37, 0.14);
+  color: var(--accent-3);
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.hero-copy h1 {
+  margin: 18px 0 16px;
+  font-size: clamp(2.7rem, 4vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+  color: var(--text);
+}
+
+.hero-copy p {
+  max-width: 560px;
+  font-size: 1.08rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+  animation: slideUp 0.8s ease both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-list {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 18px;
+}
+
+.feature-list div {
+  background: rgba(17, 22, 29, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+  animation: slideUp 0.9s ease both;
+}
+
+.feature-list div:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.feature-list div:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.feature-list strong,
+.feature-list span {
+  display: block;
+}
+
+.feature-list strong {
+  margin-bottom: 6px;
+}
+
+.feature-list span {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.burger-card {
+  width: min(100%, 470px);
+  background: linear-gradient(180deg, rgba(21, 27, 34, 0.95), rgba(15, 18, 24, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.badge-pill {
+  display: inline-block;
+  background: rgba(77, 159, 109, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(77, 159, 109, 0.2);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.burger-illustration {
+  margin: 28px auto 20px;
+  position: relative;
+  width: min(100%, 320px);
+  height: 240px;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+.burger-illustration img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.status-card {
+  background: rgba(49, 29, 22, 0.92);
+  border: 1px solid rgba(132, 74, 32, 0.18);
+  border-radius: 18px;
+  padding: 18px 18px 14px;
+  color: #fffaf6;
+  animation: heroPanelReveal 0.8s ease-out both;
+}
+
+@keyframes heroPanelReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-card h3,
+.status-card p,
+.status-card ul {
+  margin: 0 0 10px;
+}
+
+.status-card ul {
+  padding-left: 18px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+}
+
+.status-card li {
+  margin-bottom: 6px;
+}
+
+.status-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.status-meta span {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.status-meta button {
+  padding: 10px 14px;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  margin: 14px 0 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+  letter-spacing: -0.05em;
+}
+
+.menu-section,
+.order-section,
+.staff-section {
+  padding: 42px 0 20px;
+}
+
+.menu-grid {
+  display: grid;
+  gap: 26px;
+}
+
+.category-block {
+  background: rgba(17, 21, 27, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+}
+
+.category-title {
+  margin: 0 0 18px;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
+.category-items {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.menu-card {
+  background: linear-gradient(180deg, rgba(20, 23, 30, 0.96), rgba(17, 21, 27, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 36px rgba(226, 120, 45, 0.14);
+}
+
+.menu-image {
+  height: 170px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, rgba(255, 160, 80, 0.10), rgba(255,255,255,0.02));
+}
+
+.menu-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.menu-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.menu-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.menu-meta {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.menu-meta strong {
+  font-size: 1.3rem;
+}
+
+.menu-meta button {
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #2a160d;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 25px rgba(226, 120, 45, 0.16);
+}
+
+.order-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+}
+
+.cart-panel,
+.info-card,
+.admin-card,
+.login-card {
+  background: rgba(17, 21, 27, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+}
+
+.cart-items {
+  display: grid;
+  gap: 14px;
+  min-height: 120px;
+}
+
+.empty-cart {
+  color: var(--muted);
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(132, 74, 32, 0.11);
+  padding-bottom: 12px;
+}
+
+.cart-item h4,
+.cart-item p {
+  margin: 0;
+}
+
+.cart-item p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.cart-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(132, 74, 32, 0.14);
+  background: rgba(255,255,255,0.3);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.price-tag {
+  font-weight: 800;
+}
+
+.totals {
+  margin-top: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.totals > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+}
+
+.totals hr {
+  border: none;
+  border-top: 1px solid rgba(132, 74, 32, 0.12);
+  margin: 8px 0;
+}
+
+.grand-total {
+  color: var(--text) !important;
+  font-size: 1.2rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px 18px;
+}
+
+.info-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.info-card h3 {
+  margin: 0 0 14px;
+}
+
+.info-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.info-card.accent {
+  background: linear-gradient(135deg, rgba(242, 165, 92, 0.18), rgba(255,255,255,0.12));
+  border: 1px solid rgba(182, 90, 38, 0.18);
+}
+
+.staff-panel {
+  display: grid;
+}
+
+.login-card {
+  max-width: 420px;
+  margin: 0 auto 24px;
+}
+
+.full-login {
+  width: min(100%, 460px);
+  background: rgba(17, 21, 27, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.login-card h3,
+.admin-card h4,
+.portal-header h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.login-card label,
+.admin-card label {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.login-card input,
+.admin-card input,
+.admin-card select,
+.admin-card textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.54);
+  border: 1px solid rgba(132, 74, 32, 0.14);
+  border-radius: 12px;
+  color: var(--text);
+  padding: 16px 18px;
+  margin-top: 8px;
+  font-size: 1rem;
+}
+
+.login-card input:focus,
+.admin-card input:focus,
+.admin-card select:focus,
+.admin-card textarea:focus {
+  outline: none;
+  border-color: rgba(185, 93, 38, 0.38);
+  box-shadow: 0 0 0 4px rgba(232, 147, 70, 0.1);
+}
+
+.full {
+  width: 100%;
+}
+
+small {
+  display: block;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.portal {
+  display: block;
+}
+
+.portal-full {
+  background: rgba(17, 21, 27, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 26px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  min-height: 70vh;
+}
+
+.portal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.admin-card {
+  min-height: 100%;
+}
+
+.wide-card {
+  grid-column: 1 / -1;
+}
+
+.split-fields {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 14px;
+}
+
+.permission-box {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 18px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.permission-box label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.list-box {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.list-box li {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--muted);
+}
+
+.footer {
+  padding: 40px 0 60px;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  border-top: 1px solid rgba(132, 74, 32, 0.12);
+  padding-top: 24px;
+}
+
+.discord-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, rgba(114, 137, 218, 0.14), rgba(255, 123, 44, 0.12));
+  border: 1px solid rgba(114, 137, 218, 0.24);
+  color: #3d2f2f;
+  font-weight: 700;
+}
+
+.discord-link.ssrp-box {
+  background: linear-gradient(135deg, rgba(244, 184, 98, 0.16), rgba(235, 128, 57, 0.14));
+  border: 1px solid rgba(244, 184, 98, 0.3);
+  color: var(--accent);
+  margin-top: 8px;
+}
+
+.footer p {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .order-wrap,
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-scene {
+    width: 280px;
+    right: 0.5rem;
+    bottom: 6rem;
+    opacity: 0.2;
+  }
+
+  .category-items {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .main-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .category-items {
+    grid-template-columns: 1fr;
+  }
+
+  .table-scene {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .feature-list,
+  .split-fields,
+  .permission-box {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-wrap {
+    gap: 10px;
+  }
+
+  .hero {
+    padding-top: 42px;
+  }
+}
+
+.payment-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(17, 21, 27, 0.96), rgba(15, 17, 22, 0.96));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  max-width: 480px;
+  width: min(100%, calc(100% - 32px));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-bottom: 1px solid rgba(132, 74, 32, 0.12);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.payment-box {
+  background: linear-gradient(180deg, rgba(255, 166, 92, 0.10), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.payment-label {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.payment-amount {
+  margin: 0 0 16px;
+  font-size: 2rem;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.modal-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 16px 0;
+}
+
+.payment-info {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.modal-footer button {
+  flex: 1;
+}
+
+
